@@ -18,7 +18,7 @@ const Search = () => {
           />
           <TouchableOpacity
             style={tw`${theme.bgWhite(30)} rounded-full p-3 m-1`}>
-            {/* <MagnifyingGlassIcon size={25} color="white" /> */}
+            <MagnifyingGlassIcon size={25} color="white" />
           </TouchableOpacity>
         </View>
       </View>
