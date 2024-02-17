@@ -3,6 +3,7 @@ import tw from 'tailwind-react-native-classnames';
 import {Text, View, StatusBar, ImageBackground} from 'react-native';
 import {theme} from '../theme/Index';
 import Search from '../parts/Search';
+import Forecast from '../parts/Forecast';
 const HomeScreen = () => {
   return (
     <View style={tw`flex-1 relative`}>
@@ -16,6 +17,7 @@ const HomeScreen = () => {
           backgroundColor="transparent"
         />
         <Search />
+        <Forecast />
       </ImageBackground>
     </View>
   );

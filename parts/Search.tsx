@@ -13,8 +13,11 @@ import {MapPinIcon} from 'react-native-heroicons/solid';
 const Search = () => {
   const [showSearch, toggleSearch] = useState<boolean>(false);
   const [locations, setLocations] = useState<number[]>([1, 2, 3]);
+  const handleLocation = (loc: number) => {
+    console.log('location', loc);
+  };
   return (
-    <SafeAreaView style={tw`flex flex-1`}>
+    <SafeAreaView style={tw`flex`}>
       <View style={tw`h-20 mx-4 relative z-50 mt-12`}>
         <View
           style={tw`flex-row justify-end items-center rounded-full ${
@@ -36,12 +39,17 @@ const Search = () => {
         {locations.length > 0 && showSearch ? (
           <View style={tw`absolute w-full bg-gray-300 top-16 rounded-3xl`}>
             {locations.map((loc, index) => {
+              let showBorder = index + 1 != locations.length;
+              let borderClass = showBorder ? 'border-b-2 border-gray-400' : '';
               return (
                 <TouchableOpacity
+                  onPress={() => handleLocation(loc)}
                   key={index}
-                  style={tw`flex-row items-center border-0 p-3 px-4 mb-1 border-b-2 border-b-gray-400`}>
+                  style={tw`flex-row items-center border-0 p-3 px-4 mb-1 ${borderClass}`}>
                   <MapPinIcon size={20} color="gray" />
-                  <Text>London, UNited Kingdom</Text>
+                  <Text style={tw`text-black text-lg ml-2`}>
+                    London, UNited Kingdom
+                  </Text>
                 </TouchableOpacity>
               );
             })}
