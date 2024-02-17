@@ -48,7 +48,7 @@ const Search = () => {
                   style={tw`flex-row items-center border-0 p-3 px-4 mb-1 ${borderClass}`}>
                   <MapPinIcon size={20} color="gray" />
                   <Text style={tw`text-black text-lg ml-2`}>
-                    London, UNited Kingdom
+                    London, United Kingdom
                   </Text>
                 </TouchableOpacity>
               );
