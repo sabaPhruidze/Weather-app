@@ -17,8 +17,8 @@ const Search = () => {
     console.log('location', loc);
   };
   return (
-    <SafeAreaView style={tw`flex`}>
-      <View style={tw`h-20 mx-4 relative z-50 mt-12`}>
+    <SafeAreaView style={tw`flex absolute z-50 top-5 right-4 w-full px-3`}>
+      <View style={tw`h-20 mx-4  mt-12 w-full`}>
         <View
           style={tw`flex-row justify-end items-center rounded-full ${
             showSearch ? theme.bgWhite(20) : 0

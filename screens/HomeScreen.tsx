@@ -6,7 +6,7 @@ import Search from '../parts/Search';
 import Forecast from '../parts/Forecast';
 const HomeScreen = () => {
   return (
-    <View style={tw`flex-1 relative`}>
+    <View style={tw`flex-1 relative z-10`}>
       <ImageBackground
         source={require('../assets/images/bg.png')}
         style={tw`absolute w-full h-full`}
