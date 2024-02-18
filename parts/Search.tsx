@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import tw from 'tailwind-react-native-classnames';
 import {
   View,
@@ -10,12 +10,17 @@ import {
 import {theme} from '../theme/Index';
 import {MagnifyingGlassIcon} from 'react-native-heroicons/outline';
 import {MapPinIcon} from 'react-native-heroicons/solid';
+import {debounce} from 'lodash';
 const Search = () => {
   const [showSearch, toggleSearch] = useState<boolean>(false);
   const [locations, setLocations] = useState<number[]>([1, 2, 3]);
   const handleLocation = (loc: number) => {
     console.log('location', loc);
   };
+  const handleSearch = (value: string) => {
+    console.log('value: ', value);
+  };
+  const handleTextDebounce = useCallback(debounce(handleSearch, 1200), []);
   return (
     <SafeAreaView style={tw`flex absolute z-50 top-5 right-4 w-full px-3`}>
       <View style={tw`h-20 mx-4  mt-12 w-full`}>
@@ -28,6 +33,7 @@ const Search = () => {
               style={tw`pl-6 pb-2 h-10 flex-1 text-base text-white`}
               placeholder="Search city"
               placeholderTextColor={'lightgray'}
+              onChangeText={handleSearch}
             />
           ) : null}
           <TouchableOpacity
