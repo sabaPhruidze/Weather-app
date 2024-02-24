@@ -4,6 +4,7 @@ import tw from 'tailwind-react-native-classnames';
 import {CalendarDaysIcon} from 'react-native-heroicons/outline';
 import {theme} from '../theme/Index';
 import {HomeScreenProps} from '../screens/HomeScreen';
+import {weatherImages} from '../constants';
 const Forecast: React.FC<HomeScreenProps> = ({
   showSearch,
   toggleSearch,
@@ -26,7 +27,7 @@ const Forecast: React.FC<HomeScreenProps> = ({
       {/* Wether image */}
       <View style={tw` flex-row justify-center mt-10`}>
         <Image
-          source={{uri: 'https:' + current?.condition?.icon}}
+          source={weatherImages[current?.condition?.text]}
           style={tw`w-52 h-52`}
         />
       </View>
@@ -44,14 +45,18 @@ const Forecast: React.FC<HomeScreenProps> = ({
             source={require('../assets/icons/wind.png')}
             style={tw`h-6 w-6 mx-2`}
           />
-          <Text style={tw`text-white font-semibold text-base`}>22km</Text>
+          <Text style={tw`text-white font-semibold text-base`}>
+            {current?.wind_kph} km
+          </Text>
         </View>
         <View style={tw`flex-row items-center`}>
           <Image
             source={require('../assets/icons/drop.png')}
             style={tw`h-6 w-6 mx-2`}
           />
-          <Text style={tw`text-white font-semibold text-base`}>23%</Text>
+          <Text style={tw`text-white font-semibold text-base`}>
+            {current?.humidity} %
+          </Text>
         </View>
         <View style={tw`flex-row items-center`}>
           <Image

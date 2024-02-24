@@ -1,6 +1,25 @@
 export const apiKey = '010def3496d54d24a91135158241802';
 
-export const weatherImages = {
+interface WeatherImages {
+  'Partly cloudy': any;
+  'Moderate rain': any;
+  'Patchy rain possible': any;
+  Sunny: any;
+  Clear: any;
+  Overcast: any;
+  Cloudy: any;
+  'Light rain': any;
+  'Moderate rain at times': any;
+  'Light rain shower': any;
+  'Heavy rain': any;
+  'Heavy rain at times': any;
+  'Moderate or heavy freezing rain': any;
+  'Moderate or heavy rain shower': any;
+  'Moderate or heavy rain with thunder': any;
+  other: any;
+}
+
+export const weatherImages: WeatherImages = {
   'Partly cloudy': require('../assets/images/partlycloudy.png'),
   'Moderate rain': require('../assets/images/moderaterain.png'),
   'Patchy rain possible': require('../assets/images/moderaterain.png'),
@@ -9,9 +28,10 @@ export const weatherImages = {
   Overcast: require('../assets/images/cloud.png'),
   Cloudy: require('../assets/images/cloud.png'),
   'Light rain': require('../assets/images/moderaterain.png'),
+  'Light rain shower': require('../assets/images/moderaterain.png'),
   'Moderate rain at times': require('../assets/images/moderaterain.png'),
   'Heavy rain at times': require('../assets/images/heavyrain.png'),
-  'Heavy rain ': require('../assets/images/heavyrain.png'),
+  'Heavy rain': require('../assets/images/heavyrain.png'),
   'Moderate or heavy freezing rain': require('../assets/images/heavyrain.png'),
   'Moderate or heavy rain shower': require('../assets/images/heavyrain.png'),
   'Moderate or heavy rain with thunder': require('../assets/images/heavyrain.png'),
