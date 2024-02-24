@@ -26,7 +26,7 @@ const Forecast: React.FC<HomeScreenProps> = ({
       {/* Wether image */}
       <View style={tw` flex-row justify-center mt-10`}>
         <Image
-          source={require('../assets/images/partlycloudy.png')}
+          source={{uri: 'https:' + current?.condition?.icon}}
           style={tw`w-52 h-52`}
         />
       </View>
