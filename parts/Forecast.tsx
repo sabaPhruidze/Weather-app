@@ -75,61 +75,28 @@ const Forecast: React.FC<HomeScreenProps> = ({
           horizontal
           contentContainerStyle={{paddingHorizontal: 0, marginVertical: 10}}
           showsHorizontalScrollIndicator={false}>
-          <View
-            style={tw`flex justify-center items-center w-24 rounded-3xl py-3 my-1 mr-4 ${theme.bgWhite(
-              20,
-            )}`}>
-            <Image
-              source={require('../assets/images/heavyrain.png')}
-              style={tw`h-11 w-11`}
-            />
-            <Text style={tw`text-white`}>Monday</Text>
-            <Text style={tw`text-white text-xl font-semibold`}>13&#176;</Text>
-          </View>
-          <View
-            style={tw`flex justify-center items-center w-24 rounded-3xl py-3 my-1 mr-4 ${theme.bgWhite(
-              20,
-            )}`}>
-            <Image
-              source={require('../assets/images/heavyrain.png')}
-              style={tw`h-11 w-11`}
-            />
-            <Text style={tw`text-white`}>Tuesday</Text>
-            <Text style={tw`text-white text-xl font-semibold`}>13&#176;</Text>
-          </View>
-          <View
-            style={tw`flex justify-center items-center w-24 rounded-3xl py-3 my-1 mr-4 ${theme.bgWhite(
-              20,
-            )}`}>
-            <Image
-              source={require('../assets/images/heavyrain.png')}
-              style={tw`h-11 w-11`}
-            />
-            <Text style={tw`text-white`}>Monday</Text>
-            <Text style={tw`text-white text-xl font-semibold`}>13&#176;</Text>
-          </View>
-          <View
-            style={tw`flex justify-center items-center w-24 rounded-3xl py-3 my-1 mr-4 ${theme.bgWhite(
-              20,
-            )}`}>
-            <Image
-              source={require('../assets/images/heavyrain.png')}
-              style={tw`h-11 w-11`}
-            />
-            <Text style={tw`text-white`}>Monday</Text>
-            <Text style={tw`text-white text-xl font-semibold`}>13&#176;</Text>
-          </View>
-          <View
-            style={tw`flex justify-center items-center w-24 rounded-3xl py-3 my-1 mr-4 ${theme.bgWhite(
-              20,
-            )}`}>
-            <Image
-              source={require('../assets/images/heavyrain.png')}
-              style={tw`h-11 w-11`}
-            />
-            <Text style={tw`text-white`}>Monday</Text>
-            <Text style={tw`text-white text-xl font-semibold`}>13&#176;</Text>
-          </View>
+          {weather?.forecast?.forecastday?.map((item: any, idx: number) => {
+            let date = new Date(item.date);
+            let options = {weekday: 'long'};
+            let dayName = date.toLocaleDateString('en-US', options);
+            const conditionText = item?.day?.condition?.text || 'Sunny';
+            const weatherImage =
+              weatherImages[conditionText as keyof WeatherImages];
+
+            return (
+              <View
+                key={idx}
+                style={tw`flex justify-center items-center w-24 rounded-3xl py-3 my-1 mr-4 ${theme.bgWhite(
+                  20,
+                )}`}>
+                <Image source={weatherImage} style={tw`h-11 w-11`} />
+                <Text style={tw`text-white`}>{dayName}</Text>
+                <Text style={tw`text-white text-xl font-semibold`}>
+                  {item?.day?.avgtemp_c}&#176;
+                </Text>
+              </View>
+            );
+          })}
         </ScrollView>
       </View>
     </View>
