@@ -1,18 +1,26 @@
 import {View, Text, Image, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import tw from 'tailwind-react-native-classnames';
 import {CalendarDaysIcon} from 'react-native-heroicons/outline';
 import {theme} from '../theme/Index';
-const Forecast = () => {
+import {HomeScreenProps} from '../screens/HomeScreen';
+const Forecast: React.FC<HomeScreenProps> = ({
+  showSearch,
+  toggleSearch,
+  locations,
+  handleLocation,
+  handleSearch,
+  weather,
+}) => {
   const SameStyle = 'text-center font-bold text-white';
-
+  const {current, location} = weather;
   return (
     <View
       style={tw`mx-4 flex justify-around flex-1 mb-2 absolute z-10 top-40 left-0`}>
       <Text style={tw`text-white text-center text-2xl font-bold`}>
-        London,{' '}
+        {location?.name},
         <Text style={tw`text-lg font-semibold text-gray-300`}>
-          United Kingdom
+          {' ' + location?.country}
         </Text>
       </Text>
       {/* Wether image */}
@@ -23,9 +31,11 @@ const Forecast = () => {
         />
       </View>
       <View style={tw`my-4 mt-10`}>
-        <Text style={tw` text-4xl ml-5 ${SameStyle}`}>23&#176;</Text>
+        <Text style={tw` text-4xl ml-5 ${SameStyle}`}>
+          {current?.temp_c}&#176;
+        </Text>
         <Text style={tw`${SameStyle} text-xl ml-5 tracking-widest`}>
-          Partly cloudy
+          {current?.condition?.text}
         </Text>
       </View>
       <View style={tw`flex-row justify-between mx-4 mt-10`}>

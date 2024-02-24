@@ -6,6 +6,14 @@ import Search from '../parts/Search';
 import Forecast from '../parts/Forecast';
 import {fetchLocations, fetchWeatherForecast} from '../api/Weather';
 
+export interface HomeScreenProps {
+  showSearch: boolean;
+  toggleSearch: (value: boolean) => void;
+  locations: number[];
+  handleLocation: (loc: Location) => void;
+  handleSearch: (value: string) => void;
+  weather?: any;
+}
 export interface Location {
   country: string;
   id: number;
@@ -58,7 +66,14 @@ const HomeScreen = () => {
           handleLocation={handleLocation}
           handleSearch={handleSearch}
         />
-        <Forecast />
+        <Forecast
+          showSearch={showSearch}
+          toggleSearch={toggleSearch}
+          locations={locations}
+          handleLocation={handleLocation}
+          handleSearch={handleSearch}
+          weather={weather}
+        />
       </ImageBackground>
     </View>
   );

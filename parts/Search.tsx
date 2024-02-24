@@ -11,15 +11,9 @@ import {theme} from '../theme/Index';
 import {MagnifyingGlassIcon} from 'react-native-heroicons/outline';
 import {MapPinIcon} from 'react-native-heroicons/solid';
 import {debounce} from 'lodash';
-import {Location} from '../screens/HomeScreen';
-interface SearchProps {
-  showSearch: boolean;
-  toggleSearch: (value: boolean) => void;
-  locations: number[];
-  handleLocation: (loc: Location) => void;
-  handleSearch: (value: string) => void;
-}
-const Search: React.FC<SearchProps> = ({
+import {Location, HomeScreenProps} from '../screens/HomeScreen';
+
+const Search: React.FC<HomeScreenProps> = ({
   showSearch,
   toggleSearch,
   locations,
