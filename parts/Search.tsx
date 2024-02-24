@@ -11,23 +11,23 @@ import {theme} from '../theme/Index';
 import {MagnifyingGlassIcon} from 'react-native-heroicons/outline';
 import {MapPinIcon} from 'react-native-heroicons/solid';
 import {debounce} from 'lodash';
-import {fetchLocations} from '../api/Weather';
-const Search = () => {
-  const [showSearch, toggleSearch] = useState<boolean>(false);
-  const [locations, setLocations] = useState<number[]>([1, 2, 3]);
-
-  const handleLocation = (loc: number) => {
-    console.log('location', loc);
-  };
-
-  const handleSearch = (value: string) => {
-    if (value.length > 2) {
-      fetchLocations({cityName: value}).then(data => {
-        console.log('got locaitons: ', data);
-      });
-    }
-  };
+import {Location} from '../screens/HomeScreen';
+interface SearchProps {
+  showSearch: boolean;
+  toggleSearch: (value: boolean) => void;
+  locations: number[];
+  handleLocation: (loc: Location) => void;
+  handleSearch: (value: string) => void;
+}
+const Search: React.FC<SearchProps> = ({
+  showSearch,
+  toggleSearch,
+  locations,
+  handleLocation,
+  handleSearch,
+}) => {
   const handleTextDebounce = useCallback(debounce(handleSearch, 1200), []); //it will not call imeddiatelly the infromation, it will wait 1 second and a bit more in order to give a time user to write which country he or she searches
+
   return (
     <SafeAreaView style={tw`flex absolute z-50 top-5 right-4 w-full px-3`}>
       <View style={tw`h-20 mx-4  mt-12 w-full`}>
@@ -51,7 +51,7 @@ const Search = () => {
         </View>
         {locations.length > 0 && showSearch ? (
           <View style={tw`absolute w-full bg-gray-300 top-16 rounded-3xl`}>
-            {locations.map((loc, index) => {
+            {locations.map((loc: any, index: number) => {
               let showBorder = index + 1 != locations.length;
               let borderClass = showBorder ? 'border-b-2 border-gray-400' : '';
               return (
@@ -61,7 +61,7 @@ const Search = () => {
                   style={tw`flex-row items-center border-0 p-3 px-4 mb-1 ${borderClass}`}>
                   <MapPinIcon size={20} color="gray" />
                   <Text style={tw`text-black text-lg ml-2`}>
-                    London, United Kingdom
+                    {loc?.name}, {loc?.country}
                   </Text>
                 </TouchableOpacity>
               );

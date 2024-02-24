@@ -5,6 +5,7 @@ import {CalendarDaysIcon} from 'react-native-heroicons/outline';
 import {theme} from '../theme/Index';
 const Forecast = () => {
   const SameStyle = 'text-center font-bold text-white';
+
   return (
     <View
       style={tw`mx-4 flex justify-around flex-1 mb-2 absolute z-10 top-40 left-0`}>
