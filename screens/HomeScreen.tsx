@@ -5,6 +5,7 @@ import {theme} from '../theme/Index';
 import Search from '../parts/Search';
 import Forecast from '../parts/Forecast';
 import {fetchLocations, fetchWeatherForecast} from '../api/Weather';
+import * as Progress from 'react-native-progress';
 
 interface Location {
   name: string;
@@ -109,17 +110,18 @@ const HomeScreen = () => {
       fe: 'fe',
     },
   });
-
+  const [loading, setLoading] = useState<boolean>(true);
   const handleLocation = (loc: Location) => {
     console.log('location', loc);
     setLocations([]);
     toggleSearch(false);
+    setLoading(true);
     fetchWeatherForecast({
       cityName: loc.name,
       days: 7,
     }).then(data => {
       setWeather(data);
-      console.log('got data', data);
+      setLoading(false);
     });
   };
 
@@ -140,6 +142,7 @@ const HomeScreen = () => {
       days: 7,
     }).then(data => {
       setWeather(data);
+      setLoading(false);
     });
   };
   return (
@@ -153,21 +156,30 @@ const HomeScreen = () => {
           translucent
           backgroundColor="transparent"
         />
-        <Search
-          showSearch={showSearch}
-          toggleSearch={toggleSearch}
-          locations={locations}
-          handleLocation={handleLocation}
-          handleSearch={handleSearch}
-        />
-        <Forecast
-          showSearch={showSearch}
-          toggleSearch={toggleSearch}
-          locations={locations}
-          handleLocation={handleLocation}
-          handleSearch={handleSearch}
-          weather={weather}
-        />
+
+        {loading ? (
+          <View style={tw`flex-1 flex-row justify-center items-center`}>
+            <Text style={tw`text-white text-4xl`}>Loading...</Text>
+          </View>
+        ) : (
+          <View>
+            <Search
+              showSearch={showSearch}
+              toggleSearch={toggleSearch}
+              locations={locations}
+              handleLocation={handleLocation}
+              handleSearch={handleSearch}
+            />
+            <Forecast
+              showSearch={showSearch}
+              toggleSearch={toggleSearch}
+              locations={locations}
+              handleLocation={handleLocation}
+              handleSearch={handleSearch}
+              weather={weather}
+            />
+          </View>
+        )}
       </ImageBackground>
     </View>
   );

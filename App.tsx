@@ -1,14 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import tw from 'tailwind-react-native-classnames';
-import {
-  Text,
-  View,
-  StatusBar,
-  Image,
-  ImageBackground,
-  SafeAreaView,
-  TextInput,
-} from 'react-native';
+import {View, Text} from 'react-native';
 import {theme} from './theme/Index';
 import HomeScreen from './screens/HomeScreen';
 
