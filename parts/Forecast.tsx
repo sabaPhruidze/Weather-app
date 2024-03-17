@@ -5,6 +5,8 @@ import {CalendarDaysIcon} from 'react-native-heroicons/outline';
 import {theme} from '../theme/Index';
 import {HomeScreenProps} from '../screens/HomeScreen';
 import {weatherImages} from '../constants';
+import {WeatherImages} from '../constants';
+
 const Forecast: React.FC<HomeScreenProps> = ({
   showSearch,
   toggleSearch,
@@ -19,24 +21,24 @@ const Forecast: React.FC<HomeScreenProps> = ({
     <View
       style={tw`mx-4 flex justify-around flex-1 mb-2 absolute z-10 top-40 left-0`}>
       <Text style={tw`text-white text-center text-2xl font-bold`}>
-        {location?.name},
+        {location?.name || 'Georgia'},
         <Text style={tw`text-lg font-semibold text-gray-300`}>
-          {' ' + location?.country}
+          {location?.country || ' Tbilisi'}
         </Text>
       </Text>
       {/* Wether image */}
       <View style={tw` flex-row justify-center mt-10`}>
         <Image
-          source={weatherImages[current?.condition?.text]}
+          source={weatherImages[weather?.condition?.text]}
           style={tw`w-52 h-52`}
         />
       </View>
       <View style={tw`my-4 mt-10`}>
         <Text style={tw` text-4xl ml-5 ${SameStyle}`}>
-          {current?.temp_c}&#176;
+          {current?.temp_c || 13}&#176;
         </Text>
         <Text style={tw`${SameStyle} text-xl ml-5 tracking-widest`}>
-          {current?.condition?.text}
+          {current?.condition?.text || 'Patchy rain nearby'}
         </Text>
       </View>
       <View style={tw`flex-row justify-between mx-4 mt-10`}>

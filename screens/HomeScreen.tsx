@@ -6,13 +6,26 @@ import Search from '../parts/Search';
 import Forecast from '../parts/Forecast';
 import {fetchLocations, fetchWeatherForecast} from '../api/Weather';
 
+interface CurrentWeather {
+  last_updated_epoch: number;
+  last_updated: string;
+  temp_c: number;
+  temp_f: number;
+  is_day: number;
+  condition: {
+    text: string;
+    icon: string;
+    code: number;
+  };
+}
+
 export interface HomeScreenProps {
   showSearch: boolean;
   toggleSearch: (value: boolean) => void;
   locations: number[];
   handleLocation: (loc: Location) => void;
   handleSearch: (value: string) => void;
-  weather?: any;
+  weather?: CurrentWeather;
 }
 export interface Location {
   country: string;
@@ -26,7 +39,18 @@ export interface Location {
 const HomeScreen = () => {
   const [showSearch, toggleSearch] = useState<boolean>(false);
   const [locations, setLocations] = useState<number[]>([]);
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState<CurrentWeather>({
+    last_updated_epoch: 1710690300,
+    last_updated: '2024-03-17 15:45',
+    temp_c: 13.5,
+    temp_f: 56.3,
+    is_day: 1,
+    condition: {
+      text: 'Patchy rain nearby',
+      icon: '//cdn.weatherapi.com/weather/64x64/day/176.png',
+      code: 1063,
+    },
+  });
 
   const handleLocation = (loc: Location) => {
     console.log('location', loc);

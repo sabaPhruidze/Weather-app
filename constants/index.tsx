@@ -1,31 +1,31 @@
-export const apiKey = '010def3496d54d24a91135158241802';
+export const apiKey = 'c95d7890cc284161a58152316241703';
 
-interface WeatherImages {
-  'Partly cloudy': any;
-  'Moderate rain': any;
-  'Patchy rain possible': any;
-  Sunny: any;
-  Clear: any;
-  Overcast: any;
-  Cloudy: any;
-  'Light rain': any;
-  'Moderate rain at times': any;
-  'Light rain shower': any;
-  'Heavy rain': any;
-  'Heavy rain at times': any;
-  'Moderate or heavy freezing rain': any;
-  'Moderate or heavy rain shower': any;
-  'Moderate or heavy rain with thunder': any;
-  other: any;
+export interface WeatherImages {
+  'Partly Cloudy ': string;
+  'Moderate rain': string;
+  'Patchy rain nearby': string;
+  Sunny: string;
+  Clear: string;
+  'Overcast ': string;
+  Cloudy: string;
+  'Light rain': string;
+  'Moderate rain at times': string;
+  'Light rain shower': string;
+  'Heavy rain': string;
+  'Heavy rain at times': string;
+  'Moderate or heavy freezing rain': string;
+  'Moderate or heavy rain shower': string;
+  'Moderate or heavy rain with thunder': string;
+  other: string;
 }
 
 export const weatherImages: WeatherImages = {
-  'Partly cloudy': require('../assets/images/partlycloudy.png'),
+  'Partly Cloudy ': require('../assets/images/partlycloudy.png'),
   'Moderate rain': require('../assets/images/moderaterain.png'),
-  'Patchy rain possible': require('../assets/images/moderaterain.png'),
-  Sunny: require('../assets/icons/sun.png'),
+  'Patchy rain nearby': require('../assets/images/moderaterain.png'),
+  Sunny: require('../assets/images/sun.png'),
   Clear: require('../assets/icons/sun.png'),
-  Overcast: require('../assets/images/cloud.png'),
+  'Overcast ': require('../assets/images/cloud.png'),
   Cloudy: require('../assets/images/cloud.png'),
   'Light rain': require('../assets/images/moderaterain.png'),
   'Light rain shower': require('../assets/images/moderaterain.png'),
