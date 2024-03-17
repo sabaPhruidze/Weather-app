@@ -28,6 +28,23 @@ interface Current {
     icon: string;
     code: number;
   };
+  wind_mph: number;
+  wind_kph: number;
+  wind_degree: number;
+  wind_dir: string;
+  pressure_mb: number;
+  pressure_in: number;
+  precip_mm: number;
+  precip_in: number;
+  humidity: number;
+  cloud: number;
+  feelslike_c: number;
+  feelslike_f: number;
+  vis_km: number;
+  vis_miles: number;
+  uv: number;
+  gust_mph: number;
+  gust_kph: number;
 }
 
 interface CurrentWeather {
@@ -70,6 +87,23 @@ const HomeScreen = () => {
         icon: '//cdn.weatherapi.com/weather/64x64/day/176.png',
         code: 1063,
       },
+      wind_mph: 8.5,
+      wind_kph: 13.7,
+      wind_degree: 199,
+      wind_dir: 'SSW',
+      pressure_mb: 1015.0,
+      pressure_in: 29.96,
+      precip_mm: 0.09,
+      precip_in: 0.0,
+      humidity: 86,
+      cloud: 100,
+      feelslike_c: 12.4,
+      feelslike_f: 54.3,
+      vis_km: 10.0,
+      vis_miles: 6.0,
+      uv: 3.0,
+      gust_mph: 11.2,
+      gust_kph: 18.1,
     },
     forecast: {
       fe: 'fe',

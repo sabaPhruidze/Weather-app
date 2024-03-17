@@ -16,8 +16,6 @@ const Forecast: React.FC<HomeScreenProps> = ({
   weather,
 }) => {
   const SameStyle = 'text-center font-bold text-white';
-  console.log('Weather condition:', weather?.current?.condition?.text);
-  console.log('Keys in weatherImages:', Object.keys(weatherImages));
 
   return (
     <View
