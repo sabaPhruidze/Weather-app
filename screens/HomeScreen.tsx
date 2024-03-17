@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import tw from 'tailwind-react-native-classnames';
 import {Text, View, StatusBar, ImageBackground} from 'react-native';
 import {theme} from '../theme/Index';
@@ -129,6 +129,18 @@ const HomeScreen = () => {
         setLocations(data);
       });
     }
+  };
+  useEffect(() => {
+    fetchMyWeatherData();
+  }, []);
+
+  const fetchMyWeatherData = async () => {
+    fetchWeatherForecast({
+      cityName: 'Tbilisi',
+      days: 7,
+    }).then(data => {
+      setWeather(data);
+    });
   };
   return (
     <View style={tw`flex-1 relative z-10`}>

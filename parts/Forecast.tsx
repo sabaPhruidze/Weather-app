@@ -21,9 +21,9 @@ const Forecast: React.FC<HomeScreenProps> = ({
     <View
       style={tw`mx-4 flex justify-around flex-1 mb-2 absolute z-10 top-40 left-0`}>
       <Text style={tw`text-white text-center text-2xl font-bold`}>
-        {weather?.location?.name || 'Georgia'},
+        {weather?.location?.name},
         <Text style={tw`text-lg font-semibold text-gray-300`}>
-          {weather?.location?.country || ' Tbilisi'}
+          {weather?.location?.country}
         </Text>
       </Text>
       {/* Wether image */}
@@ -39,10 +39,10 @@ const Forecast: React.FC<HomeScreenProps> = ({
       </View>
       <View style={tw`my-4 mt-10`}>
         <Text style={tw` text-4xl ml-5 ${SameStyle}`}>
-          {weather?.current?.temp_c || 13}&#176;
+          {weather?.current?.temp_c}&#176;
         </Text>
         <Text style={tw`${SameStyle} text-xl ml-5 tracking-widest`}>
-          {weather?.current?.condition?.text || 'Patchy rain nearby'}
+          {weather?.current?.condition?.text}
         </Text>
       </View>
       <View style={tw`flex-row justify-between mx-4 mt-10`}>
@@ -83,8 +83,7 @@ const Forecast: React.FC<HomeScreenProps> = ({
           showsHorizontalScrollIndicator={false}>
           {weather?.forecast?.forecastday?.map((item: any, idx: number) => {
             let date = new Date(item.date);
-            let options = {weekday: 'long'};
-            let dayName = date.toLocaleDateString('en-US', options);
+            let dayName = date.toLocaleDateString('en-US', {weekday: 'long'});
             const conditionText = item?.day?.condition?.text || 'Sunny';
             const weatherImage =
               weatherImages[conditionText as keyof WeatherImages];
