@@ -16,29 +16,35 @@ const Forecast: React.FC<HomeScreenProps> = ({
   weather,
 }) => {
   const SameStyle = 'text-center font-bold text-white';
-  const {current, location} = weather;
+  console.log('Weather condition:', weather?.current?.condition?.text);
+  console.log('Keys in weatherImages:', Object.keys(weatherImages));
+
   return (
     <View
       style={tw`mx-4 flex justify-around flex-1 mb-2 absolute z-10 top-40 left-0`}>
       <Text style={tw`text-white text-center text-2xl font-bold`}>
-        {location?.name || 'Georgia'},
+        {weather?.location?.name || 'Georgia'},
         <Text style={tw`text-lg font-semibold text-gray-300`}>
-          {location?.country || ' Tbilisi'}
+          {weather?.location?.country || ' Tbilisi'}
         </Text>
       </Text>
       {/* Wether image */}
       <View style={tw` flex-row justify-center mt-10`}>
-        <Image
-          source={weatherImages[weather?.condition?.text]}
-          style={tw`w-52 h-52`}
-        />
+        {weather?.current?.condition.text ? (
+          <Image
+            source={(weatherImages as any)[weather?.current?.condition?.text]}
+            style={tw`w-52 h-52`}
+          />
+        ) : (
+          ''
+        )}
       </View>
       <View style={tw`my-4 mt-10`}>
         <Text style={tw` text-4xl ml-5 ${SameStyle}`}>
-          {current?.temp_c || 13}&#176;
+          {weather?.current?.temp_c || 13}&#176;
         </Text>
         <Text style={tw`${SameStyle} text-xl ml-5 tracking-widest`}>
-          {current?.condition?.text || 'Patchy rain nearby'}
+          {weather?.current?.condition?.text || 'Patchy rain nearby'}
         </Text>
       </View>
       <View style={tw`flex-row justify-between mx-4 mt-10`}>
@@ -48,7 +54,7 @@ const Forecast: React.FC<HomeScreenProps> = ({
             style={tw`h-6 w-6 mx-2`}
           />
           <Text style={tw`text-white font-semibold text-base`}>
-            {current?.wind_kph} km
+            {weather?.current?.wind_kph} km
           </Text>
         </View>
         <View style={tw`flex-row items-center`}>
@@ -57,7 +63,7 @@ const Forecast: React.FC<HomeScreenProps> = ({
             style={tw`h-6 w-6 mx-2`}
           />
           <Text style={tw`text-white font-semibold text-base`}>
-            {current?.humidity} %
+            {weather?.current?.humidity} %
           </Text>
         </View>
         <View style={tw`flex-row items-center`}>

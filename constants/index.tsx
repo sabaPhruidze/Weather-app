@@ -2,11 +2,13 @@ export const apiKey = 'c95d7890cc284161a58152316241703';
 
 export interface WeatherImages {
   'Partly Cloudy ': string;
+  'Partly cloudy': string;
   'Moderate rain': string;
   'Patchy rain nearby': string;
   Sunny: string;
   Clear: string;
   'Overcast ': string;
+  Overcast: string;
   Cloudy: string;
   'Light rain': string;
   'Moderate rain at times': string;
@@ -21,11 +23,13 @@ export interface WeatherImages {
 
 export const weatherImages: WeatherImages = {
   'Partly Cloudy ': require('../assets/images/partlycloudy.png'),
+  'Partly cloudy': require('../assets/images/partlycloudy.png'),
   'Moderate rain': require('../assets/images/moderaterain.png'),
   'Patchy rain nearby': require('../assets/images/moderaterain.png'),
   Sunny: require('../assets/images/sun.png'),
   Clear: require('../assets/icons/sun.png'),
   'Overcast ': require('../assets/images/cloud.png'),
+  Overcast: require('../assets/images/cloud.png'),
   Cloudy: require('../assets/images/cloud.png'),
   'Light rain': require('../assets/images/moderaterain.png'),
   'Light rain shower': require('../assets/images/moderaterain.png'),

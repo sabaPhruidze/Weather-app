@@ -6,7 +6,18 @@ import Search from '../parts/Search';
 import Forecast from '../parts/Forecast';
 import {fetchLocations, fetchWeatherForecast} from '../api/Weather';
 
-interface CurrentWeather {
+interface Location {
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  tz_id: string;
+  localtime_epoch: number;
+  localtime: string;
+}
+
+interface Current {
   last_updated_epoch: number;
   last_updated: string;
   temp_c: number;
@@ -19,6 +30,12 @@ interface CurrentWeather {
   };
 }
 
+interface CurrentWeather {
+  location: Location;
+  current: Current;
+  forecast: any;
+}
+
 export interface HomeScreenProps {
   showSearch: boolean;
   toggleSearch: (value: boolean) => void;
@@ -27,28 +44,35 @@ export interface HomeScreenProps {
   handleSearch: (value: string) => void;
   weather?: CurrentWeather;
 }
-export interface Location {
-  country: string;
-  id: number;
-  lat: number;
-  lon: number;
-  name: string;
-  region: string;
-  url: string;
-}
+
 const HomeScreen = () => {
   const [showSearch, toggleSearch] = useState<boolean>(false);
   const [locations, setLocations] = useState<number[]>([]);
   const [weather, setWeather] = useState<CurrentWeather>({
-    last_updated_epoch: 1710690300,
-    last_updated: '2024-03-17 15:45',
-    temp_c: 13.5,
-    temp_f: 56.3,
-    is_day: 1,
-    condition: {
-      text: 'Patchy rain nearby',
-      icon: '//cdn.weatherapi.com/weather/64x64/day/176.png',
-      code: 1063,
+    location: {
+      name: 'London',
+      region: 'City of London, Greater London',
+      country: 'United Kingdom',
+      lat: 51.52,
+      lon: -0.11,
+      tz_id: 'Europe/London',
+      localtime_epoch: 1710690456,
+      localtime: '2024-03-17 15:47',
+    },
+    current: {
+      last_updated_epoch: 1710690300,
+      last_updated: '2024-03-17 15:45',
+      temp_c: 13.5,
+      temp_f: 56.3,
+      is_day: 1,
+      condition: {
+        text: 'Patchy rain nearby',
+        icon: '//cdn.weatherapi.com/weather/64x64/day/176.png',
+        code: 1063,
+      },
+    },
+    forecast: {
+      fe: 'fe',
     },
   });
 

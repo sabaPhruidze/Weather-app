@@ -11,7 +11,7 @@ import {theme} from '../theme/Index';
 import {MagnifyingGlassIcon} from 'react-native-heroicons/outline';
 import {MapPinIcon} from 'react-native-heroicons/solid';
 import {debounce} from 'lodash';
-import {Location, HomeScreenProps} from '../screens/HomeScreen';
+import {HomeScreenProps} from '../screens/HomeScreen';
 
 const Search: React.FC<HomeScreenProps> = ({
   showSearch,
