@@ -23,7 +23,7 @@ const Forecast: React.FC<HomeScreenProps> = ({
       <Text style={tw`text-white text-center text-2xl font-bold`}>
         {weather?.location?.name},
         <Text style={tw`text-lg font-semibold text-gray-300`}>
-          {weather?.location?.country}
+          {' ' + weather?.location?.country}
         </Text>
       </Text>
       {/* Wether image */}
@@ -69,7 +69,9 @@ const Forecast: React.FC<HomeScreenProps> = ({
             source={require('../assets/icons/sun.png')}
             style={tw`h-6 w-6 mx-2`}
           />
-          <Text style={tw`text-white font-semibold text-base`}>6:05 AM</Text>
+          <Text style={tw`text-white font-semibold text-base`}>
+            {weather?.forecast?.forecastday[0]?.astro?.sunrise}
+          </Text>
         </View>
       </View>
       <View style={tw`mb-2 my-3`}>

@@ -112,7 +112,7 @@ const HomeScreen = () => {
   });
   const [loading, setLoading] = useState<boolean>(true);
   const handleLocation = (loc: Location) => {
-    console.log('location', loc);
+    // console.log('location', loc);
     setLocations([]);
     toggleSearch(false);
     setLoading(true);
@@ -159,7 +159,7 @@ const HomeScreen = () => {
 
         {loading ? (
           <View style={tw`flex-1 flex-row justify-center items-center`}>
-            <Text style={tw`text-white text-4xl`}>Loading...</Text>
+            <Progress.CircleSnail thickness={10} size={140} color="#0bb3b2" />
           </View>
         ) : (
           <View>
