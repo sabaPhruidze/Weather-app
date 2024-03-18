@@ -1,26 +1,28 @@
+import {ImageSourcePropType} from 'react-native';
+
 export const apiKey = 'c95d7890cc284161a58152316241703';
 
 export interface WeatherImages {
-  'Partly Cloudy ': string;
-  'Partly cloudy': string;
-  Fog: string;
-  'Moderate rain': string;
-  'Patchy rain nearby': string;
-  Sunny: string;
-  Clear: string;
-  'Overcast ': string;
-  Overcast: string;
-  Cloudy: string;
-  'Light rain': string;
-  'Moderate rain at times': string;
-  'Light rain shower': string;
-  'Heavy rain': string;
-  'Heavy rain at times': string;
-  'Heavy snow': string;
-  'Moderate or heavy freezing rain': string;
-  'Moderate or heavy rain shower': string;
-  'Moderate or heavy rain with thunder': string;
-  other: string;
+  'Partly Cloudy ': ImageSourcePropType;
+  'Partly cloudy': ImageSourcePropType;
+  Fog: ImageSourcePropType;
+  'Moderate rain': ImageSourcePropType;
+  'Patchy rain nearby': ImageSourcePropType;
+  Sunny: ImageSourcePropType;
+  Clear: ImageSourcePropType;
+  'Overcast ': ImageSourcePropType;
+  Overcast: ImageSourcePropType;
+  Cloudy: ImageSourcePropType;
+  'Light rain': ImageSourcePropType;
+  'Moderate rain at times': ImageSourcePropType;
+  'Light rain shower': ImageSourcePropType;
+  'Heavy rain': ImageSourcePropType;
+  'Heavy rain at times': ImageSourcePropType;
+  'Heavy snow': ImageSourcePropType;
+  'Moderate or heavy freezing rain': ImageSourcePropType;
+  'Moderate or heavy rain shower': ImageSourcePropType;
+  'Moderate or heavy rain with thunder': ImageSourcePropType;
+  other: ImageSourcePropType;
 }
 
 export const weatherImages: WeatherImages = {

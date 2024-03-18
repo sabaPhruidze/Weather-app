@@ -7,14 +7,7 @@ import {HomeScreenProps} from '../screens/HomeScreen';
 import {weatherImages} from '../constants';
 import {WeatherImages} from '../constants';
 
-const Forecast: React.FC<HomeScreenProps> = ({
-  showSearch,
-  toggleSearch,
-  locations,
-  handleLocation,
-  handleSearch,
-  weather,
-}) => {
+const Forecast: React.FC<HomeScreenProps> = ({weather}) => {
   const SameStyle = 'text-center font-bold text-white';
 
   return (
